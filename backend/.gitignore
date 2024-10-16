@@ -1,7 +1,0 @@
-# Python virtual environment
-/.env
-
-# Certs
-/certificate.pem
-/csr.pem
-/private_key.pem
