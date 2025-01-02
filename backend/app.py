@@ -18,7 +18,7 @@ client_token = os.getenv('CLIENT_TOKEN')
 def home():
     try:
         # Example logic that might raise an exception
-        result = 1 / 0  # This will raise a ZeroDivisionError
+        # Code to 'try' should go here
         return 'Welcome to the D2O app!'
     except Exception as e:
         return web.json_response({'error': str(e)}), 500
@@ -71,7 +71,7 @@ async def login(request: web.Request) -> web.Response:
 #        )
 
 # After logging in we will be redirected from our Bungie app to this location.
-# This "/callback" route is configured in your Bungie Application at the developer portal.
+# This "/callback" route is configured in our Bungie Application at the developer portal.
 @router.get("/callback")
 async def callback(request: web.Request) -> web.Response:
     # Check if the code parameter is in the redirect URL.
@@ -135,7 +135,7 @@ def main() -> None:
     # Add the routes.
     app.add_routes(router)
 
-    # Add on start and close callbacks
+    # Add ob start and close callbacks
     app.on_startup.append(on_start_up)
     app.on_shutdown.append(on_shutdown)
 
@@ -144,7 +144,7 @@ def main() -> None:
     # run on https.
     ctx = ssl.create_default_context(ssl.Purpose.CLIENT_AUTH)
 
-    # You should generate cert and private key files and place their path here.
+    # certificates for the browser's use
     ctx.load_cert_chain("certificate.pem", "private_key.pem")
 
     # Run the app.
